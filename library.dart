@@ -75,7 +75,7 @@ void main(List<String> args) async {
         print('enter the name:');
         String data = stdin.readLineSync()!;
         print(books
-            .where((element) => element['name'] == data)
+            .where((element) => element['name']!.toLowerCase().contains(data.toLowerCase()))
             .map((e) => {"name": e['name'], "price": e['price']}));
       }
 
