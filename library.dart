@@ -17,9 +17,9 @@ void main(List<String> args) async {
 
   print('enter the select:');
   int? s = int.tryParse(await stdin.readLineSync()!);
-  if (s == null || s < 1 || s > 3) {
-    print("input is not currect!!");
-    return;
+  while (s == null || s < 1 || s > 3) {
+    print("input is not currect!!\nPlease try again:");
+    s = int.tryParse(await stdin.readLineSync()!);
   }
 
   while (true) {
@@ -75,7 +75,8 @@ void main(List<String> args) async {
         print('enter the name:');
         String data = stdin.readLineSync()!;
         print(books
-            .where((element) => element['name']!.toLowerCase().contains(data.toLowerCase()))
+            .where((element) =>
+                element['name']!.toLowerCase().contains(data.toLowerCase()))
             .map((e) => {"name": e['name'], "price": e['price']}));
       }
 
